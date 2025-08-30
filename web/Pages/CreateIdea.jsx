@@ -1,0 +1,96 @@
+import React, { useRef } from 'react'
+import '../style/CreateIdea.css'
+import { useNavigate } from 'react-router-dom';
+
+const CreateIdea = () => {
+
+  const navigate = useNavigate()
+
+  const titleRef = useRef()
+  const impactRef = useRef()
+  const effortRef = useRef()
+  const statusRef = useRef()
+
+  const handelonsubmit = async (e) => {
+    e.preventDefault()
+
+    const NewIdea = {
+      id: Date.now(),   // unique id
+      title: titleRef.current.value,
+      impact: impactRef.current.value,
+      effort: effortRef.current.value,
+      status: statusRef.current.value,
+      votes: 1
+    }
+
+    try {
+      const res = await fetch("http://127.0.0.1:8000/ideas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(NewIdea)
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        alert(err.detail || "Error creating idea");
+        return;
+      }
+
+      // go to dashboard page
+      navigate("/dashboard");
+
+    } catch (error) {
+      console.error("Error creating idea:", error);
+      alert("Server not running");
+    }
+  }
+
+  return (
+    <>
+      <div className="header">
+        <h1>BRTNeura Technology</h1>
+      </div>
+
+      <div className="create-idea-container">
+        <h2>New Idea</h2>
+
+        <form onSubmit={handelonsubmit}>
+          <input
+            className='text'
+            type="text"
+            ref={titleRef}
+            placeholder="Enter Task Title"
+            required
+          />
+
+          <label>Impact</label>
+          <select ref={impactRef}>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+
+          <label>Effort</label>
+          <select ref={effortRef}>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+
+          <label>Status</label>
+          <select ref={statusRef}>
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Closed</option>
+          </select>
+
+          <button type="submit">Create Idea</button>
+        </form>
+
+        <p>Go Back To <a href="/dashboard">DashBoard</a></p>
+      </div>
+    </>
+  )
+}
+
+export default CreateIdea

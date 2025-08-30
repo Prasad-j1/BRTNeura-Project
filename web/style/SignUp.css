@@ -1,0 +1,86 @@
+/* Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* light cyan background */
+}
+
+/* Header fixed at top */
+.header {
+    text-align: center;
+    padding: 20px 0px;
+    background: #00796b; /* teal */
+    color: white;
+    text-decoration: underline;
+}
+
+.loginpage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 9%;
+}
+
+.form{
+    border: 1px solid #00796b; /* teal border */
+    padding: 70px 40px;
+    text-align: center;
+    width: 30%;
+    border-radius: 10px;
+    background: #ffffff; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form h3{
+    font-size: 37px;
+    margin-bottom: 40px;
+    color: #00796b; 
+    text-transform: uppercase
+    
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.input .text,
+.input .password{
+    margin-bottom: 30px;
+    padding: 12px 10px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 22px;
+    border: 1px solid #00796b;
+}
+
+.form button{
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    padding: 14px 8px;
+    background: #00796b; 
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.form h5{
+    font-size: 20px;
+    margin-top: 10px;
+    color: #004d40;
+}
+
+.form h5 a{
+    color: #00796b;
+    text-decoration: none;
+}
+
+.form h5 a:hover{
+    text-decoration: underline;
+}

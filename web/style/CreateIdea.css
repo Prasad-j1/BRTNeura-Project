@@ -1,0 +1,109 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* light cyan background */
+}
+
+/* Header fixed at top */
+.header {
+    text-align: center;
+    padding: 20px 0px;
+    background: #00796b; /* teal */
+    color: white;
+    text-decoration: underline;
+}
+
+.create-idea-container{
+    margin: 70px 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.create-idea-container h2{
+    font-size: 40px;
+    color: #00796b;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.create-idea-container {
+    border: 1px solid black;
+    padding: 50px 30px;
+    border-radius: 9px;
+}
+
+.create-idea-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.create-idea-container .text{
+    font-size: 20px;
+    padding: 10px 7px;
+    outline: none;
+    border-radius: 6px;
+    border: none;
+}
+.create-idea-container .text::placeholder{
+    color: #000;
+}
+
+.create-idea-container .textarea{
+    font-size: 20px;
+    padding: 10px 7px;
+    outline: none;
+    border-radius: 6px;
+    border: none;
+    height: 80px;
+}
+
+
+.create-idea-container select{
+    font-size: 20px;
+    padding: 10px 9px;
+    border-radius: 7px;
+    border: none;
+}
+
+
+.create-idea-container button{
+    font-size: 20px;
+    padding: 10px 6px;
+    margin-top: 18px;
+    border-radius: 6px;
+    background: #00796b; 
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+.create-idea-container button:hover{
+    transform: scale(1.05);
+}
+
+.create-idea-container label{
+    font-weight: 600;
+    /* margin-left: 4px; */
+}
+
+.create-idea-container p{
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.create-idea-container p a{
+    text-decoration: none;
+    color: #00796b;
+    font-weight: 600;
+}
+
+.create-idea-container p a:hover{
+    text-decoration: underline;
+}
