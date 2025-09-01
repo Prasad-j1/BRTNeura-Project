@@ -37,7 +37,6 @@ const CreateIdea = () => {
       return;
     }
 
-    // ✅ Refresh ideas or navigate
     navigate("/dashboard");
   } catch (error) {
     console.error("Network Error:", error);
