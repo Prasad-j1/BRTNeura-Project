@@ -24,36 +24,38 @@ const DashBoard = () => {
   const filteredIdeas = menu === "All" ? ideas : ideas.filter((idea) => idea.status === menu);
 
   const handleVote = async (id) => {
-    try {
-      await fetch(`http://127.0.0.1:8000/ideas/${id}/vote`, {
-        method: "POST"
-      });
+  try {
+    await fetch(`https://brtneura-project.onrender.com/ideas/${id}/vote`, {
+      method: "POST"
+    });
 
-      // refresh list
-      const res = await fetch("http://127.0.0.1:8000/ideas")
-      const data = await res.json()
-      setideas(data)
+    // refresh list
+    const res = await fetch("https://brtneura-project.onrender.com/ideas");
+    const data = await res.json();
+    setideas(data);
 
-    } catch (error) {
-      console.error("Error voting:", error)
-    }
-  };
+  } catch (error) {
+    console.error("Error voting:", error);
+  }
+};
 
-    const handleDelete = async (id) => {
-      try {
-        await fetch(`http://127.0.0.1:8000/ideas/${id}`, {
-          method: "DELETE"
-        });
 
-        // Refresh ideas list after delete
-        const res = await fetch("http://127.0.0.1:8000/ideas");
-        const data = await res.json();
-        setideas(data);
+ const handleDelete = async (id) => {
+  try {
+    await fetch(`https://brtneura-project.onrender.com/ideas/${id}`, {
+      method: "DELETE",
+    });
 
-      } catch (error) {
-        console.error("Error deleting idea:", error);
-      }
-    };
+    // Refresh ideas list after delete
+    const res = await fetch("https://brtneura-project.onrender.com/ideas");
+    const data = await res.json();
+    setideas(data);
+
+  } catch (error) {
+    console.error("Error deleting idea:", error);
+  }
+};
+
 
 
 
