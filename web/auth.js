@@ -19,7 +19,6 @@ export const signInWithEmail = (email, password) =>
 // Sign out
 export const logout = () => signOut(auth);
 
-// 🔥 Sign in with Google
 export const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
