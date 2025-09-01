@@ -12,38 +12,38 @@ const CreateIdea = () => {
   const statusRef = useRef()
 
   const handelonsubmit = async (e) => {
-    e.preventDefault()
+  e.preventDefault();
 
-    const NewIdea = {
-      id: Date.now(),   // unique id
-      title: titleRef.current.value,
-      impact: impactRef.current.value,
-      effort: effortRef.current.value,
-      status: statusRef.current.value,
-      votes: 1
-    }
+  const NewIdea = {
+    id: Date.now(),   // unique id
+    title: titleRef.current.value,
+    impact: impactRef.current.value,
+    effort: effortRef.current.value,
+    status: statusRef.current.value,
+    votes: 1
+  };
 
-    try {
-      const res = await fetch("https://brtneura-project.onrender.com/ideas", {
+  try {
+    const res = await fetch("https://brtneura-project.onrender.com/ideas", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(NewIdea)
-  });
+      body: JSON.stringify(NewIdea),
+    });
 
-      if (!res.ok) {
-        const err = await res.json();
-        alert(err.detail || "Error creating idea");
-        return;
-      }
-
-      // go to dashboard page
-      navigate("/dashboard");
-
-    } catch (error) {
-      console.error("Error creating idea:", error);
-      alert("Server not running");
+    if (!res.ok) {
+      const err = await res.json();
+      console.error("API Error:", err);
+      alert(err.detail || "Error creating idea");
+      return;
     }
+
+    // ✅ Refresh ideas or navigate
+    navigate("/dashboard");
+  } catch (error) {
+    console.error("Network Error:", error);
+    alert("Network/Server error: " + error.message);
   }
+};
 
   return (
     <>
