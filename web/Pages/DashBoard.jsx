@@ -11,7 +11,7 @@ const DashBoard = () => {
   useEffect(() => {
     const fetchIdeas = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/ideas")
+        const res = await fetch("https://brtneura-project.onrender.com/ideas")
         const data = await res.json()
         setideas(data)
       } catch (error) {
