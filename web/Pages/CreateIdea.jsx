@@ -22,6 +22,7 @@ const CreateIdea = () => {
     status: statusRef.current.value,
     votes: 1
   };
+  console.log("Sending idea:", NewIdea);
 
   try {
     const res = await fetch("https://brtneura-project.onrender.com/ideas", {
