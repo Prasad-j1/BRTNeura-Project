@@ -42,7 +42,8 @@ const CreateIdea = () => {
     navigate("/dashboard");
   } catch (error) {
     console.error("Network Error:", error);
-    alert("Network/Server error: " + error.message);
+    // alert("Network/Server error: " + error.message);
+    alert("server band ahe nahi chalat ye");
   }
 };
 
