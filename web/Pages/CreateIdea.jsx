@@ -11,17 +11,16 @@ const CreateIdea = () => {
   const effortRef = useRef()
   const statusRef = useRef()
 
-  const handelonsubmit = async (e) => {
-  e.preventDefault();
-
+  const handleCreateIdea = async () => {
   const NewIdea = {
-    id: Date.now(),   // unique id
+    id: Date.now(),
     title: titleRef.current.value,
     impact: impactRef.current.value,
     effort: effortRef.current.value,
     status: statusRef.current.value,
-    votes: 1
+    votes: 1,
   };
+
   console.log("Sending idea:", NewIdea);
 
   try {
@@ -32,18 +31,18 @@ const CreateIdea = () => {
     });
 
     if (!res.ok) {
-      const err = await res.json();
-      console.error("API Error:", err);
-      // alert(err.detail || "Error creating idea");
-      alert("server band ahe nahi chalat ye");
-      return;
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(
+        `Error ${res.status}: ${errorData.detail || res.statusText}`
+      );
     }
 
-    navigate("/dashboard");
-  } catch (error) {
-    console.error("Network Error:", error);
-    // alert("Network/Server error: " + error.message);
-    alert("server band ahe nahi chalat ye");
+    const data = await res.json();
+    console.log("Idea created:", data);
+    alert("Idea created successfully!");
+  } catch (err) {
+    console.error("Create Idea failed:", err);
+    alert("Failed to create idea: " + err.message);
   }
 };
 
@@ -56,7 +55,7 @@ const CreateIdea = () => {
       <div className="create-idea-container">
         <h2>New Idea</h2>
 
-        <form onSubmit={handelonsubmit}>
+        <form onSubmit={handleCreateIdea}>
           <input
             className='text'
             type="text"
