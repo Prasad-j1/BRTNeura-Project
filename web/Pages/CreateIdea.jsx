@@ -34,7 +34,8 @@ const CreateIdea = () => {
     if (!res.ok) {
       const err = await res.json();
       console.error("API Error:", err);
-      alert(err.detail || "Error creating idea");
+      // alert(err.detail || "Error creating idea");
+      alert("server band ahe nahi chalat ye");
       return;
     }
 
